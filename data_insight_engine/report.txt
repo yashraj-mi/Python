@@ -1,0 +1,33 @@
+{
+    "total_posts": 251,
+    "average_likes": 616,
+    "total_views": 600103,
+    "average_content_length": 259,
+    "most_viewed_post": {
+        "id": 206,
+        "title": "The mountain stream sparkled in the sunlight",
+        "content": "Its crystal-clear waters bubbling over smooth rocks and pebbles. Tall trees shaded the banks, their leaves rustling in the gentle breeze. The air was fresh and invigorating, carrying with it the scent of pine and wildflowers. It was a scene of pure serenity, a hidden gem tucked away in the heart of the wilderness.",
+        "views": 4993,
+        "likes": 1193,
+        "dislikes": 13,
+        "userId": 142
+    },
+    "most_liked_post": {
+        "id": 175,
+        "title": "The mountain lake was a mirror",
+        "content": "Reflecting the snow-capped peaks and clear blue sky. The water was crystal clear, inviting and serene. It was a place of tranquility, where one could sit on the shore and lose themselves in the beauty of nature's perfection.",
+        "views": 4102,
+        "likes": 1489,
+        "dislikes": 48,
+        "userId": 128
+    },
+    "longest_post": {
+        "id": 3,
+        "title": "Dave watched as the forest burned up on the hill.",
+        "content": "Dave watched as the forest burned up on the hill, only a few miles from her house. The car had been hastily packed and Marta was inside trying to round up the last of the pets. Dave went through his mental list of the most important papers and documents that they couldn't leave behind. He scolded himself for not having prepared these better in advance and hoped that he had remembered everything that was needed. He continued to wait for Marta to appear with the pets, but she still was nowhere to be seen.",
+        "views": 4152,
+        "likes": 1448,
+        "dislikes": 39,
+        "userId": 16
+    }
+}
