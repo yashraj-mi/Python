@@ -1,4 +1,5 @@
 import math
+from functools import reduce
 
 
 def greetings(name):
@@ -30,7 +31,8 @@ print(factorial(3))
 
 
 def isPalindrome(str):
-    str_list = [c for c in str]
+
+    str_list = [c for c in str.lower()]
 
     i = 0
     j = len(str) - 1
@@ -55,3 +57,28 @@ def calculate_area(radius):
 
 
 print(calculate_area(3.1))
+
+
+strings = ["yashraj", "abcdcba", "AhrttRHA"]
+
+print(list(map(lambda x: isPalindrome(x), strings)))
+
+
+numbers = [x for x in range(50)]
+
+print(list(filter(lambda x: x % 2 == 0, numbers)))
+
+
+print(reduce(lambda acc, b: acc + b, numbers, 0))
+
+
+def gen_function():
+
+    return (x for x in range(19))
+
+
+gen = gen_function()
+
+print(next(gen))
+print(next(gen))
+print(next(gen))
