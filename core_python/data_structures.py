@@ -1,5 +1,4 @@
-# LIST
-
+# Lists
 
 fruits = ["Apple", "Orange", "Banana"]
 
@@ -7,14 +6,18 @@ for fruit in fruits:
     print(fruit)
 
 fruits.append("Mango")
-fruits.extend(["Watermelon", "Graps"])
+fruits.extend(["Watermelon", "Grapes"])
 
 print(fruits)
 
 
 # Dictionary
 
-user = {"name": "Yashraj Sharma", "age": "21", "role": "Python Trainee"}
+user = {
+    "name": "Yashraj Sharma",
+    "age": 21,
+    "role": "Python Trainee",
+}
 
 for key, value in user.items():
     print(f"{key}: {value}")
@@ -25,30 +28,36 @@ user["mobile"] = "8989898988"
 print(user)
 
 
-# tuple
+# Tuple
 
 states = ("Gujarat", "Rajasthan", "Haryana", "Delhi")
 
 print(states)
-# can not add or mutate tuples because it's immutable
-# states[0]="HR" --->Gives Error
+
+# Tuples are immutable
+# states[0] = "Punjab"  # TypeError
 
 
-A = {1, 2, 3, 4}
-B = {3, 4, 5, 6}
+# Sets
 
-print(A | B)
-print(A.union(B))
+a = {1, 2, 3, 4}
+b = {3, 4, 5, 6}
 
-print(A & B)
-print(A - B)
-print(A)
+print(a | b)
+print(a.union(b))
 
+print(a & b)
+print(a - b)
+
+
+# Tuple as dictionary key
 
 key_tuple = (1, 2, 3)
-key_list = [1, 2, 3]
 
-sample_dict = {
-    key_tuple: "Yashraj",  # it is valid because tuple is immutable
-    key_list: "Yashraj",  # it's invalid because list is mutable
-}
+sample_dict = {key_tuple: "Yashraj"}
+
+print(sample_dict)
+
+# Lists cannot be dictionary keys because they are mutable
+# key_list = [1, 2, 3]
+# sample_dict = {key_list: "Yashraj"}
