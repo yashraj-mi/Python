@@ -1,383 +1,398 @@
 # Expense Tracker CLI
 
-A Splitwise-style Expense Tracker built with Python, SQLAlchemy ORM, PostgreSQL, and Argparse.
+A Splitwise-style Expense Tracker built using Python, SQLAlchemy ORM, PostgreSQL, and Argparse.
 
-This project allows users to:
-
-* Create and manage users
-* Record shared expenses
-* Split expenses among participants
-* Track settlements
-* Calculate balances
-* Generate reports and summaries
-* Manage everything through a command-line interface
+The application allows users to manage shared expenses, settlements, balances, and reports entirely from the command line.
 
 ---
 
-# Features
+## Features
 
-## User Management
+### User Management
 
-* Add user
-* Get user by ID
-* List all users
-* Update user
-* Delete user
+* Add User
+* Get User by ID
+* List Users
+* Update User
+* Delete User
 
-## Expense Management
+### Expense Management
 
-* Add expense
-* Get expense details
-* List all expenses
-* Update expense
-* Delete expense
+* Add Expense
+* Get Expense Details
+* List All Expenses
+* Update Expense
+* Delete Expense
 
-## Settlement Management
+### Settlement Management
 
-* Create settlements automatically
-* Mark settlement as paid
-* View pending settlements
-* View paid settlements
-* View all settlements
+* Automatic Settlement Creation
+* Mark Settlement as Paid
+* View Pending Settlements
+* View Paid Settlements
+* View All Settlements
 
-## Balance Tracking
+### Balance Tracking
 
-* Total amount owed by a user
-* Total amount receivable by a user
-* Net balance calculation
+* Total Amount Owed
+* Total Amount Receivable
+* Net Balance Calculation
 
-## Reports
+### Reports
 
-* User expense report
-* Monthly expense report
-* Category-wise expense report
-* Expenses paid by a specific user
-* Expense participant summary
+* User Expense Report
+* Monthly Expense Report
+* Category-wise Expense Report
+* Expenses Paid By User
+* Group Expense Summary
 
 ---
 
-# Tech Stack
+## Tech Stack
 
 * Python 3.10+
 * SQLAlchemy ORM
 * PostgreSQL
 * Argparse
+* python-dotenv
 
 ---
 
-# Project Structure
+## Project Structure
 
+```text
 expense_tracker/
 
 ├── main.py
-
-├── requirements.txt
-
 ├── README.md
-
-│
+├── requirements.txt
+├── pyproject.toml
+├── .env.example
 
 ├── cli/
-
 │   ├── parser.py
-
 │   ├── command_config.py
-
 │   └── commands/
 
-│
-
 ├── database/
-
 │   ├── db.py
-
 │   ├── decorators.py
-
 │   └── create_tables.py
 
-│
-
 ├── models/
-
 │   ├── user.py
-
 │   ├── expense.py
-
 │   ├── participant.py
-
 │   └── settlement.py
 
-│
-
 ├── services/
-
 │   ├── user_service.py
-
 │   ├── expense_service.py
-
 │   ├── settlement_service.py
-
 │   ├── balance_service.py
-
 │   ├── report_service.py
-
 │   └── summary_service.py
 
-│
-
-├── schemas/
-
-│   └── helper.py
-
-│
-
+└── schemas/
+    └── helper.py
+```
 
 ---
 
-# Installation
+## Installation
 
-Clone the repository:
+### Clone Repository
 
-git clone <repository-url>
+```bash
+git clone https://github.com/<username>/expense_tracker.git
 
 cd expense_tracker
+```
 
-Create virtual environment:
+### Create Virtual Environment
 
+```bash
 python -m venv .venv
+```
 
-Activate environment:
+### Activate Virtual Environment
 
-Linux/Mac:
+Linux / Mac
 
+```bash
 source .venv/bin/activate
+```
 
-Windows:
+Windows
 
+```bash
 .venv\Scripts\activate
+```
 
-Install dependencies:
+### Install Dependencies
 
+```bash
 pip install -r requirements.txt
+```
 
 ---
 
-# Database Configuration
+## Environment Variables
 
-Update DATABASE_URL inside:
+Create a `.env` file in the project root.
 
-database/db.py
+```env
+DB_URL=postgresql://username:password@localhost:5432/expense_tracker
+```
 
 Example:
 
-DATABASE_URL = "postgresql+psycopg2://postgres:password@localhost:5432/expense_tracker"
-
-Create tables:
-
-python main.py create-tables
-
-or
-
-python database/create_tables.py
+```env
+DB_URL=postgresql://postgres:postgres@localhost:5432/expense_tracker
+```
 
 ---
 
-# Available Commands
+## Database Setup
+
+Create a PostgreSQL database:
+
+```sql
+CREATE DATABASE expense_tracker;
+```
+
+Create tables:
+
+```bash
+python database/create_tables.py
+```
+
+---
+
+## Running the Application
+
+### Using Python
+
+```bash
+python main.py -h
+```
+
+### Using Installed CLI Command
+
+```bash
+expense-tracker -h
+```
+
+---
 
 ## User Commands
 
-Add User
+### Add User
 
-python main.py add-user --name Yashraj
+```bash
+expense-tracker add-user --name Yashraj
+```
 
-Get User
+### Get User
 
-python main.py get-user --user-id 1
+```bash
+expense-tracker get-user --user-id 1
+```
 
-List Users
+### List Users
 
-python main.py list-users
+```bash
+expense-tracker list-users
+```
 
-Update User
+### Update User
 
-python main.py update-user --user-id 1 --name Yash
+```bash
+expense-tracker update-user --user-id 1 --name Yash
+```
 
-Delete User
+### Delete User
 
-python main.py delete-user --user-id 1
+```bash
+expense-tracker delete-user --user-id 1
+```
 
 ---
 
 ## Expense Commands
 
-Add Expense
+### Add Expense
 
-python main.py add-expense 
---description Lunch 
---category Food 
---amount 3000 
---paid-by 1 
+```bash
+expense-tracker add-expense \
+--description Lunch \
+--category Food \
+--amount 3000 \
+--paid-by 1 \
 --participants 1 2 3
+```
 
-Get Expense
+### Get Expense
 
-python main.py get-expense --expense-id 1
+```bash
+expense-tracker get-expense --expense-id 1
+```
 
-List Expenses
+### List Expenses
 
-python main.py get-all-expenses
+```bash
+expense-tracker get-all-expenses
+```
 
-Delete Expense
+### Delete Expense
 
-python main.py delete-expense --expense-id 1
+```bash
+expense-tracker delete-expense --expense-id 1
+```
 
 ---
 
 ## Settlement Commands
 
-Mark Settlement Paid
+### Mark Settlement Paid
 
-python main.py mark-paid --settlement-id 1
+```bash
+expense-tracker mark-paid --settlement-id 1
+```
 
-Get Pending Settlements
+### Get Pending Settlements
 
-python main.py get-pending-settlements --user-id 1
+```bash
+expense-tracker get-pending-settlements --user-id 1
+```
 
-Get Paid Settlements
+### Get Paid Settlements
 
-python main.py get-paid-settlements --user-id 1
+```bash
+expense-tracker get-paid-settlements --user-id 1
+```
 
-Get All Settlements
+### Get All Settlements
 
-python main.py get-all-settlements
+```bash
+expense-tracker get-all-settlements
+```
 
 ---
 
 ## Balance Commands
 
-Get Total Owed
+### Get Total Owed
 
-python main.py get-total-owed --user-id 1
+```bash
+expense-tracker get-total-owed --user-id 1
+```
 
-Get Total Receivable
+### Get Total Receivable
 
-python main.py get-total-receivable --user-id 1
+```bash
+expense-tracker get-total-receivable --user-id 1
+```
 
-Get Net Balance
+### Get Net Balance
 
-python main.py get-net-balance --user-id 1
+```bash
+expense-tracker get-net-balance --user-id 1
+```
 
 ---
 
 ## Report Commands
 
-User Expense Report
+### User Expense Report
 
-python main.py get-user-expenses --user-id 1
+```bash
+expense-tracker get-user-expenses --user-id 1
+```
 
-Monthly Expense Report
+### Monthly Expense Report
 
-python main.py get-monthly-expenses --month 6
+```bash
+expense-tracker get-monthly-expenses --month 6
+```
 
-Category Report
+### Category Report
 
-python main.py get-category-report
+```bash
+expense-tracker get-category-report
+```
 
-Expenses Paid By User
+### Expenses Paid By User
 
-python main.py get-expenses-paid-by-user --user-id 1
+```bash
+expense-tracker get-expenses-paid-by-user --user-id 1
+```
 
-Group Summary
+### Group Summary
 
-python main.py get-group-summary --expense-id 1
+```bash
+expense-tracker get-group-summary --expense-id 1
+```
 
 ---
 
-# Example Workflow
+## Example Workflow
 
-Step 1: Create users
+### 1. Create Users
 
-python main.py add-user --name Yashraj
+```bash
+expense-tracker add-user --name Yashraj
+expense-tracker add-user --name Romit
+expense-tracker add-user --name Sahdev
+```
 
-python main.py add-user --name Romit
+### 2. Add Expense
 
-python main.py add-user --name Sahdev
-
-Step 2: Add expense
-
-python main.py add-expense 
---description Hotel 
---category Travel 
---amount 9000 
---paid-by 1 
+```bash
+expense-tracker add-expense \
+--description Hotel \
+--category Travel \
+--amount 9000 \
+--paid-by 1 \
 --participants 1 2 3
+```
 
-Step 3: Check balances
+### 3. Check Balances
 
-python main.py get-total-receivable --user-id 1
+```bash
+expense-tracker get-total-receivable --user-id 1
+expense-tracker get-total-owed --user-id 2
+expense-tracker get-total-owed --user-id 3
+```
 
-python main.py get-total-owed --user-id 2
+### 4. Mark Settlement Paid
 
-python main.py get-total-owed --user-id 3
-
-Step 4: Mark settlement paid
-
-python main.py mark-paid --settlement-id 1
+```bash
+expense-tracker mark-paid --settlement-id 1
+```
 
 ---
 
-# Architecture
+## Architecture
 
-The application follows a layered architecture:
-
+```text
 CLI Layer
-↓
+    ↓
 Service Layer
-↓
+    ↓
 SQLAlchemy ORM
-↓
+    ↓
 PostgreSQL Database
+```
 
-Responsibilities:
+### Responsibilities
 
-* CLI handles user input.
-* Services contain business logic.
+* CLI Layer handles user input.
+* Service Layer contains business logic.
 * Models represent database tables.
-* Database layer manages sessions and transactions.
+* Database Layer manages sessions and transactions.
 
----
+```
 
-# Future Improvements
 
-* Alembic migrations
-* Unit tests
-* Docker support
-* REST API using FastAPI
-* JWT authentication
-* Group-based expenses
-* Unequal expense splitting
-* Export reports to CSV/PDF
-* Web dashboard
 
----
-
-# Learning Outcomes
-
-This project demonstrates:
-
-* Python project structure
-* SQLAlchemy ORM
-* PostgreSQL integration
-* Relationships and Foreign Keys
-* One-to-Many relationships
-* Session management
-* Decorators
-* Argparse CLI development
-* Service-oriented architecture
-* Error handling and validation
-* Report generation
-* Business logic implementation
-
----
-
-Made for learning backend architecture and ORM design using Python.
