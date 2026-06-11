@@ -127,13 +127,10 @@ expense_tracker/
 
 ├── schemas/
 
-│   ├── response.py
-
 │   └── helper.py
 
 │
 
-└── tests/
 
 ---
 

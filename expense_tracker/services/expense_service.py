@@ -166,6 +166,7 @@ def get_all_expenses(session) -> dict:
     )
 
 
+
 @with_session
 def update_expense(
     session,

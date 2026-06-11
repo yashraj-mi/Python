@@ -1,7 +1,4 @@
-from email import message
-
 from cli.parser import create_parser
-
 
 def main():
     try:
